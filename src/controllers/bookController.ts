@@ -305,3 +305,17 @@ export const searchBooks = async (req: Request, res: Response) => {
     return;
   }
 };
+
+export const allBooks = async (req: Request, res: Response) => {
+  try {
+    const books = await prisma.book.findMany({
+      where: { copies: { gt: 0 } },
+    });
+
+    res.status(200).json(books);
+    return;
+  } catch (error) {
+    res.status(500).json({ error: "Error searching books", details: error });
+    return;
+  }
+};

@@ -58,11 +58,12 @@ model BorrowedBook {
 }
 
 model Transaction {
-  id          String   @id @default(uuid())
-  userId      String
-  amount      Float
-  description String
-  createdAt   DateTime @default(now())
+  id             String   @id @default(uuid())
+  userId         String
+  borrowedBookId String
+  amount         Float
+  description    String
+  createdAt      DateTime @default(now())
 
   user User @relation(fields: [userId], references: [id])
 

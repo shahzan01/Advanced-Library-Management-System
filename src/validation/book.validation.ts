@@ -13,9 +13,10 @@ export const bookValidationSchema = z.object({
     .min(1, { message: "Copies must be at least 1" })
     .max(1000, { message: "Copies cannot exceed 1000" }),
   categories: z
-    .array(z.string().uuid())
+    .array(z.string())
     .min(1, { message: "At least one category is required" }),
   authors: z
-    .array(z.string().uuid())
+    .array(z.string())
+    // .array(z.string().uuid())
     .min(1, { message: "At least one author is required" }),
 });

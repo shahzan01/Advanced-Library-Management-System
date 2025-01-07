@@ -7,15 +7,18 @@ import {
   getBookDetailsByID,
   getBookByTitle,
   getBookByISBN,
+  allBooks,
 } from "../controllers/bookController";
 import { auth } from "../middlewares/auth";
 import isAdmin from "../middlewares/isAdmin";
+import { validate } from "../middlewares/validate";
+import { bookValidationSchema } from "../validation/book.validation";
 
 const router = express.Router();
 
-router.post("/add", auth, isAdmin, addBook);
+router.post("/add", auth, isAdmin, validate(bookValidationSchema), addBook);
 router.delete("/delete/:id", auth, isAdmin, deleteBook);
-router.post("/edit", auth, isAdmin, editBook);
+router.post("/edit", auth, isAdmin, validate(bookValidationSchema), editBook);
 
 router.get("/title/:title", auth, getBookByTitle);
 router.get("/title", auth, getBookByTitle);
@@ -32,5 +35,7 @@ router.post("/id", auth, getBookDetailsByID);
 router.get("/search", searchBooks);
 router.get("/search/:author?/:category?", searchBooks);
 router.post("/search", searchBooks);
+
+router.get("/", auth, allBooks);
 
 export default router;
