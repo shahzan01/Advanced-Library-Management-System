@@ -9,12 +9,14 @@ import libraryRoutes from "./routes/lidraryRoutes";
 import invoiceRoutes from "./routes/invoiceRoutes";
 import { apiRateLimiter } from "./middlewares/rateLimiter";
 import { scheduleReturnReminders } from "./utils/returnReminderScheduler";
+import cors from "cors";
 
 dotenv.config();
 scheduleReturnReminders();
 const app = express();
 app.use(express.json());
 app.use(apiRateLimiter);
+app.use(cors());
 app.get("/", (req: Request, res: Response) => {
   res.json({ message: "hello there" });
 });
