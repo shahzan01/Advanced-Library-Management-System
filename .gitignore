@@ -32,3 +32,5 @@ Thumbs.db
 
 # Optional: Ignore IDE-specific files like JetBrains editors
 .idea/
+
+.vercel
