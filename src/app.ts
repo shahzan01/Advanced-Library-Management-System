@@ -16,7 +16,10 @@ scheduleReturnReminders();
 const app = express();
 app.use(express.json());
 app.use(apiRateLimiter);
-app.use(cors());
+app.use(
+  cors({ origin: "https://shahzan-library-management-system.vercel.app/" })
+);
+
 app.get("/", (req: Request, res: Response) => {
   res.json({ message: "hello there" });
 });
