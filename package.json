@@ -4,11 +4,11 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "tsc --build",
+    "build": "tsc",
     "dev": "nodemon src/index.ts",
     "start": "nodemon dist/index.js",
     "seed": "ts-node prisma/seed.ts",
-    "vercel-build": "prisma generate && next build"
+    "vercel-build": "prisma generate && npm run build"
   },
   "keywords": [],
   "author": "",
