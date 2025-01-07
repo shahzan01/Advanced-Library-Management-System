@@ -8,7 +8,7 @@
     "dev": "nodemon src/index.ts",
     "start": "nodemon dist/index.js",
     "seed": "ts-node prisma/seed.ts",
-    "vercel-build": "echo hello"
+    "vercel-build": "prisma generate && next build"
   },
   "keywords": [],
   "author": "",
