@@ -62,6 +62,8 @@ The Advanced Library Management System is a backend application designed to stre
 - **Utilities:** Reusable modules for database connections and error messages.
 - **Schedulers:** Email reminders for return deadlines.
 - **Deployment:** Deployable to cloud platforms like Vercel.
+ **API Documentation**
+   Access the API documentation via Postman collection provided in the repository.
  
 ## Prerequisites
 - **Node.js**: v16+
@@ -114,10 +116,6 @@ The Advanced Library Management System is a backend application designed to stre
    npm run build
    npm run start
    ```
-
-8. **API Documentation**
-   Access the API documentation via Swagger or Postman collection provided in the repository.
-
 ## Folder Structure
 ```
 /prisma
