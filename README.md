@@ -61,7 +61,7 @@ The Advanced Library Management System is a backend application designed to stre
 - **Rate Limiting:** Prevent abuse of API endpoints.
 - **Utilities:** Reusable modules for database connections and error messages.
 - **Schedulers:** Email reminders for return deadlines.
-- **Deployment:** Deployable to cloud platforms like Vercel or Render.
+- **Deployment:** Deployable to cloud platforms like Vercel.
  
 ## Prerequisites
 - **Node.js**: v16+
