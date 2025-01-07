@@ -15,6 +15,10 @@ The Advanced Library Management System is a backend application designed to stre
   - `Author`: Manages author details and their relationship with books.
   - `Otp`: Handles email OTPs for verification purposes.
   - `BookCategory` & `BookAuthor`: Many-to-many relationship mapping between books, categories, and authors.
+ 
+<h2>Database Relationship Diagram</h2>
+<img src="https://github.com/shahzan01/Advanced-Library-Management-System/blob/main/public/db-diagram.png" alt="Database Relationship Diagram" />
+
 - **Constraints & Relationships:**
   - Each book has a unique ISBN and can have multiple copies.
   - Users can borrow up to 3 books at a time for 14 days; fines apply for overdue returns.
@@ -56,11 +60,9 @@ The Advanced Library Management System is a backend application designed to stre
 - **Validation:** Input validation using `zod`.
 - **Rate Limiting:** Prevent abuse of API endpoints.
 - **Utilities:** Reusable modules for database connections and error messages.
-
-### Bonus Features
 - **Schedulers:** Email reminders for return deadlines.
-- **Deployment:** Deployable to cloud platforms like Vercel or Render.
-- 
+- **Deployment:** Deployable to cloud platforms like Vercel.
+ 
 ## Prerequisites
 - **Node.js**: v16+
 - **PostgreSQL**: v13+
