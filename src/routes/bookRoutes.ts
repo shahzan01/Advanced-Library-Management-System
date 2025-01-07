@@ -32,9 +32,9 @@ router.get("/id/:id", auth, getBookDetailsByID);
 router.get("/id", auth, getBookDetailsByID);
 router.post("/id", auth, getBookDetailsByID);
 
-router.get("/search", searchBooks);
-router.get("/search/:author?/:category?", searchBooks);
-router.post("/search", searchBooks);
+router.get("/search", auth, searchBooks);
+router.get("/search/:author?/:category?", auth, searchBooks);
+router.post("/search", auth, searchBooks);
 
 router.get("/", auth, allBooks);
 

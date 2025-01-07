@@ -242,13 +242,13 @@ async function main() {
       data: [
         {
           id: "borrowed-1",
-          userId: "user-2",
+          userId: "user-1",
           bookId: "book-1",
           dueDate: new Date(currentDate.setDate(currentDate.getDate() + 14)),
         },
         {
           id: "borrowed-2",
-          userId: "user-3",
+          userId: "user-1",
           bookId: "book-2",
           dueDate: new Date(currentDate.setDate(currentDate.getDate() + 14)),
         },

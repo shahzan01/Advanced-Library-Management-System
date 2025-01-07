@@ -7,7 +7,7 @@ export const transactionSchema = z.object({
   userId: z.string(),
   borrowedBookId: z.string(),
   amount: z.number().positive("Amount must be a positive number").optional(),
-  description: z.string().min(1, "Description is required"),
+  description: z.string().optional(),
   createdAt: z.date().optional(),
 });
 
