@@ -60,11 +60,9 @@ The Advanced Library Management System is a backend application designed to stre
 - **Validation:** Input validation using `zod`.
 - **Rate Limiting:** Prevent abuse of API endpoints.
 - **Utilities:** Reusable modules for database connections and error messages.
-
-### Bonus Features
 - **Schedulers:** Email reminders for return deadlines.
 - **Deployment:** Deployable to cloud platforms like Vercel or Render.
-- 
+ 
 ## Prerequisites
 - **Node.js**: v16+
 - **PostgreSQL**: v13+
