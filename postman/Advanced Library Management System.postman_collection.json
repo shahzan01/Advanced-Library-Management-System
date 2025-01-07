@@ -1,0 +1,831 @@
+{
+  "info": {
+    "_postman_id": "796d80f1-d037-4419-bb04-3d2a210e26a2",
+    "name": "Advanced Library Management System",
+    "description": "This API allows users to manage library resources such as books, categories, authors, users, transactions, and borrowed books. It provides endpoints for administrators and members to interact with the system effectively.\n\n### Base URL:\n\n[https://shahzan-library-management-system.vercel.app/](https://shahzan-library-management-system.vercel.app/)\n\n### Authentication:\n\nAll protected endpoints require a jwt Token in the token header and Role in role header.\n\n- **How to Authenticate**:\n    \n    1. Use the `/auth/login` endpoint with your credentials to obtain a token.\n        \n    2. Add token in request headers in postman.\n        \n    3. Add role (\"ADMIN\" or \"MEMBER\") in request headers in postman .\n        \n\n### Error Handling:\n\nThe API uses standard HTTP status codes to indicate the success or failure of a request:\n\n- `200 OK`: Successful request.\n    \n- `400 Bad Request`: Invalid input or parameters.\n    \n- `401 Unauthorized`: Missing or invalid token.\n    \n- `404 Not Found`: Resource does not exist.\n    \n- `500 Internal Server Error`: Server encountered an error.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "36621679",
+    "_collection_link": "https://api-team-7984.postman.co/workspace/963df8d7-c337-465c-96c1-e5bf809e3282/collection/36621679-796d80f1-d037-4419-bb04-3d2a210e26a2?action=share&source=collection_link&creator=36621679"
+  },
+  "item": [
+    {
+      "name": "Book Routes",
+      "item": [
+        {
+          "name": "Admin only",
+          "item": [
+            {
+              "name": "Soft Delete Book",
+              "request": {
+                "method": "DELETE",
+                "header": [
+                  {
+                    "key": "token",
+                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFsaWNlQGV4YW1wbGUuY29tIiwiaWQiOiJ1c2VyLTEiLCJyb2xlIjoiQURNSU4iLCJpYXQiOjE3MzYyNjcwMDEsImV4cCI6MTczNjM1MzQwMX0.xHjgyxSurHCna3yg0WD2uGUPbKXgCUPfSZLP2Vz6-Ig",
+                    "type": "text"
+                  },
+                  {
+                    "key": "role",
+                    "value": "ADMIN",
+                    "type": "text"
+                  }
+                ],
+                "url": {
+                  "raw": "https://shahzan-library-management-system.vercel.app/api/v1/book/delete/book-7",
+                  "protocol": "https",
+                  "host": [
+                    "shahzan-library-management-system",
+                    "vercel",
+                    "app"
+                  ],
+                  "path": ["api", "v1", "book", "delete", "book-7"]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Add new Book",
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "token",
+                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFsaWNlQGV4YW1wbGUuY29tIiwiaWQiOiJ1c2VyLTEiLCJyb2xlIjoiQURNSU4iLCJpYXQiOjE3MzYyNjcwMDEsImV4cCI6MTczNjM1MzQwMX0.xHjgyxSurHCna3yg0WD2uGUPbKXgCUPfSZLP2Vz6-Ig",
+                    "type": "text"
+                  },
+                  {
+                    "key": "role",
+                    "value": "ADMIN",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n       \r\n        \"isbn\": \"978045187-a\",\r\n        \"title\": \"JAVA\",\r\n        \"description\": \"A book on JAVA\",\r\n        \"copies\": 10,\r\n        \"categories\": [\"category-1\",\"category-4\"],\r\n        \"authors\":[\"author-1\",\"author-5\"]\r\n\r\n\r\n        }",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "https://shahzan-library-management-system.vercel.app/api/v1/book/add",
+                  "protocol": "https",
+                  "host": [
+                    "shahzan-library-management-system",
+                    "vercel",
+                    "app"
+                  ],
+                  "path": ["api", "v1", "book", "add"]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Edit Book",
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "token",
+                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFsaWNlQGV4YW1wbGUuY29tIiwiaWQiOiJ1c2VyLTEiLCJyb2xlIjoiQURNSU4iLCJpYXQiOjE3MzYyNjcwMDEsImV4cCI6MTczNjM1MzQwMX0.xHjgyxSurHCna3yg0WD2uGUPbKXgCUPfSZLP2Vz6-Ig",
+                    "type": "text"
+                  },
+                  {
+                    "key": "role",
+                    "value": "ADMIN",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": " {\r\n          \"id\": \"book-9\",\r\n          \"isbn\": \"9780307266934\",\r\n          \"title\": \"War and Peace\",\r\n          \"description\": \"A novel by Leo Tolstoy set during the Napoleonic Wars.\",\r\n          \"copies\": 4,\r\n            \"categories\": [\"category-1\"],\r\n        \"authors\":[\"author-1\"]\r\n        }",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "https://shahzan-library-management-system.vercel.app/api/v1/book/edit",
+                  "protocol": "https",
+                  "host": [
+                    "shahzan-library-management-system",
+                    "vercel",
+                    "app"
+                  ],
+                  "path": ["api", "v1", "book", "edit"]
+                }
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "Get book by Title",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "token",
+                "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFsaWNlQGV4YW1wbGUuY29tIiwiaWQiOiJ1c2VyLTEiLCJyb2xlIjoiQURNSU4iLCJpYXQiOjE3MzYyNjcwMDEsImV4cCI6MTczNjM1MzQwMX0.xHjgyxSurHCna3yg0WD2uGUPbKXgCUPfSZLP2Vz6-Ig",
+                "type": "text"
+              },
+              {
+                "key": "role",
+                "value": "ADMIN",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "https://shahzan-library-management-system.vercel.app/api/v1/book/title/War and Peace",
+              "protocol": "https",
+              "host": ["shahzan-library-management-system", "vercel", "app"],
+              "path": ["api", "v1", "book", "title", "War and Peace"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get book by ISBN",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "token",
+                "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFsaWNlQGV4YW1wbGUuY29tIiwiaWQiOiJ1c2VyLTEiLCJyb2xlIjoiQURNSU4iLCJpYXQiOjE3MzYyNjg1MjcsImV4cCI6MTczNjM1NDkyN30.uRfIcNOAH3gFiz5Mc0LhIck_ExsiT4Q-96mdpV9MJh0",
+                "type": "text"
+              },
+              {
+                "key": "role",
+                "value": "ADMIN",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "https://shahzan-library-management-system.vercel.app/api/v1/book/isbn/9780007121008",
+              "protocol": "https",
+              "host": ["shahzan-library-management-system", "vercel", "app"],
+              "path": ["api", "v1", "book", "isbn", "9780007121008"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get book by ID",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "token",
+                "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFsaWNlQGV4YW1wbGUuY29tIiwiaWQiOiJ1c2VyLTEiLCJyb2xlIjoiQURNSU4iLCJpYXQiOjE3MzYyNjg1MjcsImV4cCI6MTczNjM1NDkyN30.uRfIcNOAH3gFiz5Mc0LhIck_ExsiT4Q-96mdpV9MJh0",
+                "type": "text"
+              },
+              {
+                "key": "role",
+                "value": "ADMIN",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "https://shahzan-library-management-system.vercel.app/api/v1/book/id/book-3",
+              "protocol": "https",
+              "host": ["shahzan-library-management-system", "vercel", "app"],
+              "path": ["api", "v1", "book", "id", "book-3"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Search book by category",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "https://shahzan-library-management-system.vercel.app/api/v1/book/search?category=fiction",
+              "protocol": "https",
+              "host": ["shahzan-library-management-system", "vercel", "app"],
+              "path": ["api", "v1", "book", "search"],
+              "query": [
+                {
+                  "key": "category",
+                  "value": "fiction"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Search book by author",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "https://shahzan-library-management-system.vercel.app/api/v1/book/search?author=F. Scott Fitzgerald",
+              "protocol": "https",
+              "host": ["shahzan-library-management-system", "vercel", "app"],
+              "path": ["api", "v1", "book", "search"],
+              "query": [
+                {
+                  "key": "author",
+                  "value": "F. Scott Fitzgerald"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get all books",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "token",
+                "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFsaWNlQGV4YW1wbGUuY29tIiwiaWQiOiJ1c2VyLTEiLCJyb2xlIjoiQURNSU4iLCJpYXQiOjE3MzYyNjcwMDEsImV4cCI6MTczNjM1MzQwMX0.xHjgyxSurHCna3yg0WD2uGUPbKXgCUPfSZLP2Vz6-Ig",
+                "type": "text"
+              },
+              {
+                "key": "role",
+                "value": "ADMIN",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "https://shahzan-library-management-system.vercel.app/api/v1/book/",
+              "protocol": "https",
+              "host": ["shahzan-library-management-system", "vercel", "app"],
+              "path": ["api", "v1", "book", ""]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "User",
+      "item": [
+        {
+          "name": "Signup",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n\r\n          \"name\": \"Alice Johnson\",\r\n          \"email\": \"alice12345@example.com\",\r\n          \"password\": \"securepass123\",\r\n          \"role\": \"MEMBER\"\r\n          \r\n           }",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "https://shahzan-library-management-system.vercel.app/api/v1/user/signup",
+              "protocol": "https",
+              "host": ["shahzan-library-management-system", "vercel", "app"],
+              "path": ["api", "v1", "user", "signup"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "login",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n\r\n          \"name\": \"Alice Johnson\",\r\n          \"email\": \"alice@example.com\",\r\n          \"password\": \"securepass123\",\r\n          \"role\": \"ADMIN\"\r\n          \r\n           }",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "https://shahzan-library-management-system.vercel.app/api/v1/user/login",
+              "protocol": "https",
+              "host": ["shahzan-library-management-system", "vercel", "app"],
+              "path": ["api", "v1", "user", "login"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Verify OTP",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "token",
+                "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImJvYkBleGFtcGxlLmNvbSIsImlkIjoidXNlci0yIiwicm9sZSI6Ik1FTUJFUiIsImlhdCI6MTczNjI2NjIwMywiZXhwIjoxNzM2MzUyNjAzfQ.pH9qSHbVN2ms9UKDDVzRXSk1AWLjTo_LMrkQUPm9RSY",
+                "type": "text"
+              },
+              {
+                "key": "role",
+                "value": "MEMBER",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    //put the otp sent to you on your email here\r\n\r\n    \"otp\":\"123456\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "https://shahzan-library-management-system.vercel.app/api/v1/user/verifyEmail",
+              "protocol": "https",
+              "host": ["shahzan-library-management-system", "vercel", "app"],
+              "path": ["api", "v1", "user", "verifyEmail"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Send OTP",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "token",
+                "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImJvYkBleGFtcGxlLmNvbSIsImlkIjoidXNlci0yIiwicm9sZSI6Ik1FTUJFUiIsImlhdCI6MTczNjI2NjIwMywiZXhwIjoxNzM2MzUyNjAzfQ.pH9qSHbVN2ms9UKDDVzRXSk1AWLjTo_LMrkQUPm9RSY",
+                "type": "text"
+              },
+              {
+                "key": "role",
+                "value": "MEMBER",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "https://shahzan-library-management-system.vercel.app/api/v1/user/sendotp",
+              "protocol": "https",
+              "host": ["shahzan-library-management-system", "vercel", "app"],
+              "path": ["api", "v1", "user", "sendotp"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Logged in User Details",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "token",
+                "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFsaWNlQGV4YW1wbGUuY29tIiwiaWQiOiJ1c2VyLTEiLCJyb2xlIjoiQURNSU4iLCJpYXQiOjE3MzYyNjY0MjcsImV4cCI6MTczNjM1MjgyN30.DDHrlssaTTKwv_HKg9jARRA9iqr36TeN9rGCM3ExJcE",
+                "type": "text"
+              },
+              {
+                "key": "role",
+                "value": "ADMIN",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "https://shahzan-library-management-system.vercel.app/api/v1/user/",
+              "protocol": "https",
+              "host": ["shahzan-library-management-system", "vercel", "app"],
+              "path": ["api", "v1", "user", ""]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Delete Logged in Account",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "token",
+                "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFsaWNlQGV4YW1wbGUuY29tIiwiaWQiOiJ1c2VyLTEiLCJyb2xlIjoiQURNSU4iLCJpYXQiOjE3MzYyNjY0MjcsImV4cCI6MTczNjM1MjgyN30.DDHrlssaTTKwv_HKg9jARRA9iqr36TeN9rGCM3ExJcE",
+                "type": "text"
+              },
+              {
+                "key": "role",
+                "value": "ADMIN",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "https://shahzan-library-management-system.vercel.app/api/v1/user/delete-account",
+              "protocol": "https",
+              "host": ["shahzan-library-management-system", "vercel", "app"],
+              "path": ["api", "v1", "user", "delete-account"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Borrowed Book Fines and Details",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "token",
+                "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFsaWNlQGV4YW1wbGUuY29tIiwiaWQiOiJ1c2VyLTEiLCJyb2xlIjoiQURNSU4iLCJpYXQiOjE3MzYyNjY0MjcsImV4cCI6MTczNjM1MjgyN30.DDHrlssaTTKwv_HKg9jARRA9iqr36TeN9rGCM3ExJcE",
+                "type": "text"
+              },
+              {
+                "key": "role",
+                "value": "ADMIN",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "https://shahzan-library-management-system.vercel.app/api/v1/user/fines",
+              "protocol": "https",
+              "host": ["shahzan-library-management-system", "vercel", "app"],
+              "path": ["api", "v1", "user", "fines"]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Catalog Management (Author/Category)",
+      "item": [
+        {
+          "name": "Add Category Admin only",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "token",
+                "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFsaWNlQGV4YW1wbGUuY29tIiwiaWQiOiJ1c2VyLTEiLCJyb2xlIjoiQURNSU4iLCJpYXQiOjE3MzYyNjcwMDEsImV4cCI6MTczNjM1MzQwMX0.xHjgyxSurHCna3yg0WD2uGUPbKXgCUPfSZLP2Vz6-Ig",
+                "type": "text"
+              },
+              {
+                "key": "role",
+                "value": "ADMIN",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"name\": \"Action\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "https://shahzan-library-management-system.vercel.app/api/v1/category/add",
+              "protocol": "https",
+              "host": ["shahzan-library-management-system", "vercel", "app"],
+              "path": ["api", "v1", "category", "add"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Add Author Admin only",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "token",
+                "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFsaWNlQGV4YW1wbGUuY29tIiwiaWQiOiJ1c2VyLTEiLCJyb2xlIjoiQURNSU4iLCJpYXQiOjE3MzYyNjcwMDEsImV4cCI6MTczNjM1MzQwMX0.xHjgyxSurHCna3yg0WD2uGUPbKXgCUPfSZLP2Vz6-Ig",
+                "type": "text"
+              },
+              {
+                "key": "role",
+                "value": "ADMIN",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"name\": \"Harry Potter\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "https://shahzan-library-management-system.vercel.app/api/v1/author/add",
+              "protocol": "https",
+              "host": ["shahzan-library-management-system", "vercel", "app"],
+              "path": ["api", "v1", "author", "add"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get all Categories",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "token",
+                "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFsaWNlQGV4YW1wbGUuY29tIiwiaWQiOiJ1c2VyLTEiLCJyb2xlIjoiQURNSU4iLCJpYXQiOjE3MzYyNjcwMDEsImV4cCI6MTczNjM1MzQwMX0.xHjgyxSurHCna3yg0WD2uGUPbKXgCUPfSZLP2Vz6-Ig",
+                "type": "text"
+              },
+              {
+                "key": "role",
+                "value": "ADMIN",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "https://shahzan-library-management-system.vercel.app/api/v1/category/",
+              "protocol": "https",
+              "host": ["shahzan-library-management-system", "vercel", "app"],
+              "path": ["api", "v1", "category", ""]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get all Authors",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "token",
+                "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFsaWNlQGV4YW1wbGUuY29tIiwiaWQiOiJ1c2VyLTEiLCJyb2xlIjoiQURNSU4iLCJpYXQiOjE3MzYyNjcwMDEsImV4cCI6MTczNjM1MzQwMX0.xHjgyxSurHCna3yg0WD2uGUPbKXgCUPfSZLP2Vz6-Ig",
+                "type": "text"
+              },
+              {
+                "key": "role",
+                "value": "ADMIN",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "https://shahzan-library-management-system.vercel.app/api/v1/author/",
+              "protocol": "https",
+              "host": ["shahzan-library-management-system", "vercel", "app"],
+              "path": ["api", "v1", "author", ""]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Library Routes",
+      "item": [
+        {
+          "name": "Borrow Book",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "token",
+                "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFsaWNlQGV4YW1wbGUuY29tIiwiaWQiOiJ1c2VyLTEiLCJyb2xlIjoiQURNSU4iLCJpYXQiOjE3MzYyNjcwMDEsImV4cCI6MTczNjM1MzQwMX0.xHjgyxSurHCna3yg0WD2uGUPbKXgCUPfSZLP2Vz6-Ig",
+                "type": "text"
+              },
+              {
+                "key": "role",
+                "value": "ADMIN",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n\"userId\":\"user-3\",\r\n\"bookId\":\"book-2\"\r\n\r\n\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "https://shahzan-library-management-system.vercel.app/api/v1/library/borrow",
+              "protocol": "https",
+              "host": ["shahzan-library-management-system", "vercel", "app"],
+              "path": ["api", "v1", "library", "borrow"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Return book",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "token",
+                "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFsaWNlQGV4YW1wbGUuY29tIiwiaWQiOiJ1c2VyLTEiLCJyb2xlIjoiQURNSU4iLCJpYXQiOjE3MzYyNjcwMDEsImV4cCI6MTczNjM1MzQwMX0.xHjgyxSurHCna3yg0WD2uGUPbKXgCUPfSZLP2Vz6-Ig",
+                "type": "text"
+              },
+              {
+                "key": "role",
+                "value": "ADMIN",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"borrowedBookId\":\"borrowed-6\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "https://shahzan-library-management-system.vercel.app/api/v1/library/return",
+              "protocol": "https",
+              "host": ["shahzan-library-management-system", "vercel", "app"],
+              "path": ["api", "v1", "library", "return"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Pay Fine",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "token",
+                "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFsaWNlQGV4YW1wbGUuY29tIiwiaWQiOiJ1c2VyLTEiLCJyb2xlIjoiQURNSU4iLCJpYXQiOjE3MzYyNjcwMDEsImV4cCI6MTczNjM1MzQwMX0.xHjgyxSurHCna3yg0WD2uGUPbKXgCUPfSZLP2Vz6-Ig",
+                "type": "text"
+              },
+              {
+                "key": "role",
+                "value": "ADMIN",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n \"userId\":\"user-4\", \r\n \"borrowedBookId\" :\"borrowed-6\"\r\n\r\n\r\n\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "https://shahzan-library-management-system.vercel.app/api/v1/library/pay-fine",
+              "protocol": "https",
+              "host": ["shahzan-library-management-system", "vercel", "app"],
+              "path": ["api", "v1", "library", "pay-fine"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get top 5 most borrowed books",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "token",
+                "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFsaWNlQGV4YW1wbGUuY29tIiwiaWQiOiJ1c2VyLTEiLCJyb2xlIjoiQURNSU4iLCJpYXQiOjE3MzYyNjcwMDEsImV4cCI6MTczNjM1MzQwMX0.xHjgyxSurHCna3yg0WD2uGUPbKXgCUPfSZLP2Vz6-Ig",
+                "type": "text"
+              },
+              {
+                "key": "role",
+                "value": "ADMIN",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "https://shahzan-library-management-system.vercel.app/api/v1/library/stats/most-borrowed",
+              "protocol": "https",
+              "host": ["shahzan-library-management-system", "vercel", "app"],
+              "path": ["api", "v1", "library", "stats", "most-borrowed"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get monthly usage stats for admins",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "token",
+                "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFsaWNlQGV4YW1wbGUuY29tIiwiaWQiOiJ1c2VyLTEiLCJyb2xlIjoiQURNSU4iLCJpYXQiOjE3MzYyNjcwMDEsImV4cCI6MTczNjM1MzQwMX0.xHjgyxSurHCna3yg0WD2uGUPbKXgCUPfSZLP2Vz6-Ig",
+                "type": "text"
+              },
+              {
+                "key": "role",
+                "value": "ADMIN",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "https://shahzan-library-management-system.vercel.app/api/v1/library/stats/monthly-usage?month=1&year=2025",
+              "protocol": "https",
+              "host": ["shahzan-library-management-system", "vercel", "app"],
+              "path": ["api", "v1", "library", "stats", "monthly-usage"],
+              "query": [
+                {
+                  "key": "month",
+                  "value": "1"
+                },
+                {
+                  "key": "year",
+                  "value": "2025"
+                }
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Invoice Routes",
+      "item": [
+        {
+          "name": "Generate Borrow invoice ",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "token",
+                "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFsaWNlQGV4YW1wbGUuY29tIiwiaWQiOiJ1c2VyLTEiLCJyb2xlIjoiQURNSU4iLCJpYXQiOjE3MzYyNjcwMDEsImV4cCI6MTczNjM1MzQwMX0.xHjgyxSurHCna3yg0WD2uGUPbKXgCUPfSZLP2Vz6-Ig",
+                "type": "text"
+              },
+              {
+                "key": "role",
+                "value": "ADMIN",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "https://shahzan-library-management-system.vercel.app/api/v1/invoice/borrow/borrowed-1",
+              "protocol": "https",
+              "host": ["shahzan-library-management-system", "vercel", "app"],
+              "path": ["api", "v1", "invoice", "borrow", "borrowed-1"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Generate Return Invoice",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "token",
+                "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFsaWNlQGV4YW1wbGUuY29tIiwiaWQiOiJ1c2VyLTEiLCJyb2xlIjoiQURNSU4iLCJpYXQiOjE3MzYyNjcwMDEsImV4cCI6MTczNjM1MzQwMX0.xHjgyxSurHCna3yg0WD2uGUPbKXgCUPfSZLP2Vz6-Ig",
+                "type": "text"
+              },
+              {
+                "key": "role",
+                "value": "ADMIN",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "https://shahzan-library-management-system.vercel.app/api/v1/invoice/return/borrowed-1",
+              "protocol": "https",
+              "host": ["shahzan-library-management-system", "vercel", "app"],
+              "path": ["api", "v1", "invoice", "return", "borrowed-1"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Generate Payment Invoice",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "token",
+                "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFsaWNlQGV4YW1wbGUuY29tIiwiaWQiOiJ1c2VyLTEiLCJyb2xlIjoiQURNSU4iLCJpYXQiOjE3MzYyNjcwMDEsImV4cCI6MTczNjM1MzQwMX0.xHjgyxSurHCna3yg0WD2uGUPbKXgCUPfSZLP2Vz6-Ig",
+                "type": "text"
+              },
+              {
+                "key": "role",
+                "value": "ADMIN",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "https://shahzan-library-management-system.vercel.app/api/v1/invoice/payment/borrowed-1",
+              "protocol": "https",
+              "host": ["shahzan-library-management-system", "vercel", "app"],
+              "path": ["api", "v1", "invoice", "payment", "borrowed-1"]
+            }
+          },
+          "response": []
+        }
+      ]
+    }
+  ]
+}

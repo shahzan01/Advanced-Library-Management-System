@@ -5,7 +5,7 @@ export const getMostBorrowedBooks = async () => {
     by: ["bookId"],
     _count: { bookId: true },
     orderBy: { _count: { bookId: "desc" } },
-    take: 10,
+    take: 5,
   });
 
   const books = await Promise.all(
