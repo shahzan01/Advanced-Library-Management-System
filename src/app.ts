@@ -10,6 +10,7 @@ import invoiceRoutes from "./routes/invoiceRoutes";
 import { apiRateLimiter } from "./middlewares/rateLimiter";
 import { scheduleReturnReminders } from "./utils/returnReminderScheduler";
 import cors from "cors";
+import { errorHandler } from "./middlewares/middleware";
 
 dotenv.config();
 scheduleReturnReminders();
@@ -31,4 +32,5 @@ app.use("/api/v1/category", categoryRoute);
 app.use("/api/v1/library", libraryRoutes);
 app.use("/api/v1/invoice", invoiceRoutes);
 
+app.use(errorHandler);
 export default app;
