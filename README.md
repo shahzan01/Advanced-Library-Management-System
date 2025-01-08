@@ -61,7 +61,11 @@ The Advanced Library Management System is a backend application designed to stre
 - **Rate Limiting:** Prevent abuse of API endpoints.
 - **Utilities:** Reusable modules for database connections and error messages.
 - **Schedulers:** Email reminders for return deadlines.
-- **Deployment:** Deployable to cloud platforms like Vercel.
+- **Deployment:** Deployed on platforms like Vercel.
+
+## API Documentation
+  Access the API documentation via Postman collection provided in the repository or by the link <a href="https://elements.getpostman.com/redirect?entityId=36621679-796d80f1-d037-4419-bb04-3d2a210e26a2&entityType=collection" target="_blank">PostMan API Documentation </a>
+
  
 ## Prerequisites
 - **Node.js**: v16+
@@ -114,10 +118,6 @@ The Advanced Library Management System is a backend application designed to stre
    npm run build
    npm run start
    ```
-
-8. **API Documentation**
-   Access the API documentation via Swagger or Postman collection provided in the repository.
-
 ## Folder Structure
 ```
 /prisma
