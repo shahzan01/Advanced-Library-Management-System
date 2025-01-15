@@ -86,34 +86,33 @@ The Advanced Library Management System is a backend application designed to stre
 
 3. **Set Up Environment Variables**
    Create a `.env` file in the root directory using the provided `.env.example`.
+
+   
    ```
-   JWT_SECRET_ADMIN=<Your admin JWT Secret>
+    JWT_SECRET_ADMIN="<Your admin JWT Secret>"
     JWT_SECRET_MEMBER=<Your member JWT Secret>
     DATABASE_URL=<Your PostgreSQL connection string>
-
     MAIL_HOST = gmail
     MAIL_USER = <Your  email>
     MAIL_PASS = <Your email password>
-
-
    ```
 
-4. **Run Database Migrations**
+5. **Run Database Migrations**
    ```bash
    npx prisma migrate deploy
    ```
 
-5. **Generate Prisma Client**
+6. **Generate Prisma Client**
    ```bash
    npx prisma generate
    ```
 
-6. **Seed the Database**
+7. **Seed the Database**
    ```bash
    npm run seed
    ```
 
-7. **Start the Server**
+8. **Start the Server**
    ```bash
    npm run build
    npm run start
